@@ -6,7 +6,6 @@ const About = () => {
         <AppLayout>
             <h1>About</h1>
             <div>Welcome to About page</div>
-            <Link href="/">Home</Link>
         </AppLayout>
     );
 };

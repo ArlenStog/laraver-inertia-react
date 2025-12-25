@@ -16,7 +16,7 @@ Route::get('/about', function () {
 });
 
 // http://localhost:8000/posts/index
+Route::get('/posts/create', [PostController::class, 'create']);
 Route::get('/posts', [PostController::class, 'index']);
-
-// http://localhost:8000/posts/1
 Route::get('/posts/{id}', [PostController::class, 'show']);
+Route::post('/posts', [PostController::class, 'store']);

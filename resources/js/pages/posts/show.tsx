@@ -8,8 +8,9 @@ interface PostShowProps {
 const PostsShow = ({ post }: PostShowProps) => {
     return (
         <AppLayout>
-            <h1>{post.title}</h1>
-            <div>{post.body}</div>
+            <h1 className="text-xl font-semibold mb-2">{post.title}</h1>
+            <p className="text-sm text-gray-500">By {post.user.name}</p>
+            <p className="text-gray-600">{post.body}</p>
         </AppLayout>
     );
 };
