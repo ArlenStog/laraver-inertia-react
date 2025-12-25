@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
+use App\Models\User;
+use Inertia\Inertia;
 
 class CommentController extends Controller
 {
@@ -13,7 +15,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        // Inertia::render('comments')
     }
 
     /**
@@ -29,7 +31,13 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        Comment::create([
+            ...$validated,
+            'user_id' => User::inRandomOrder()->first()->id
+        ]);
+        return redirect()->back();
     }
 
     /**

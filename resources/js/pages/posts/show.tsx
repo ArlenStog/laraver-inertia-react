@@ -1,18 +1,37 @@
 import AppLayout from "@/layouts/app-layout";
 import { Post } from "@/types";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
 
-interface PostShowProps {
+interface PostsShowProps {
     post: Post;
 }
 
-const PostsShow = ({ post }: PostShowProps) => {
+export default function PostsShow({ post }: PostsShowProps) {
     return (
         <AppLayout>
-            <h1 className="text-xl font-semibold mb-2">{post.title}</h1>
-            <p className="text-sm text-gray-500">By {post.user.name}</p>
-            <p className="text-gray-600">{post.body}</p>
+            <div className="space-y-6">
+                {/* Post Content */}
+                <Card className="rounded-none">
+                    <CardHeader>
+                        <CardTitle className="text-2xl">{post.title}</CardTitle>
+                        <CardDescription>
+                            By {post.user?.name} on{" "}
+                            {new Date(post.created_at).toLocaleDateString()}
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-gray-700 whitespace-pre-wrap">
+                            {post.body}
+                        </p>
+                    </CardContent>
+                </Card>
+            </div>
         </AppLayout>
     );
-};
-
-export default PostsShow;
+}
