@@ -1,3 +1,10 @@
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
 import AppLayout from "@/layouts/app-layout";
 import { Post } from "@/types";
 import { Link } from "@inertiajs/react";
@@ -18,23 +25,25 @@ const PostsIndex = ({ posts }: PostsIndexProps) => {
                 ) : (
                     <div>
                         {posts.map((post) => (
-                            <article
+                            <Card
                                 key={post.id}
-                                className="border-b border-gray-200 py-6 last:border-b-0 last:pb-0"
+                                className=" border-b border-gray-200 py-6 last:border-b-0 last:pb-0 rounder-none border-bottom-b-0 last:border-b-amber-300"
                             >
-                                <h2 className="text-xl font-semibold mb-2">
-                                    <Link href={`/posts/${post.id}`}>
-                                        {post.title}
-                                    </Link>
-                                </h2>
-                                <p className="text-sm text-gray-500">
-                                    By {post.user.name}
-                                </p>
-                                <p className="text-gray-600">
+                                <CardHeader>
+                                    <CardTitle>
+                                        <Link href={`/posts/${post.id}`}>
+                                            {post.title}
+                                        </Link>
+                                    </CardTitle>
+                                    <CardDescription>
+                                        By {post.user.name}
+                                    </CardDescription>
+                                </CardHeader>
+                                <CardContent>
                                     {post.body.substring(0, 200)}
                                     {post.body.length > 200 && "..."}
-                                </p>
-                            </article>
+                                </CardContent>
+                            </Card>
                         ))}
                     </div>
                 )}
