@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('post_id')->constrained()->onDelete('cascade');
             $table->string('ip_address');
-            $table->string('user-agent');
+            $table->string('user_agent');
             $table->timestamps();
 
             $table->unique(['post_id', 'ip_address', 'user_agent']);

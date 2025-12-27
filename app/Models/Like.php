@@ -11,7 +11,7 @@ class Like extends Model
     /** @use HasFactory<\Database\Factories\LikeFactory> */
     use HasFactory;
 
-    protected $fillable=['post_id', 'ip_address', 'user-agent'];
+    protected $fillable=['post_id', 'ip_address', 'user_agent'];
 
     public function post(): BelongsTo{
         return $this->belongsTo(Post::class);

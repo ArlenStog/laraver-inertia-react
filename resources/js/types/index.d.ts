@@ -6,6 +6,7 @@ export interface Post {
     user?: User;
     comments?: Comment[];
     likes?: Like[];
+    likes_count?: number;
     created_at: string;
     updated_at: string;
 }
@@ -38,4 +39,9 @@ export interface Like {
     ip_address: string;
     created_at: string;
     updated_at: string;
+}
+
+export interface PostLikesData {
+    count: number;
+    user_has_liked: boolean;
 }
