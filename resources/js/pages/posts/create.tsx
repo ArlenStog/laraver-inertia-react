@@ -1,3 +1,4 @@
+import { store } from "@/actions/App/Http/Controllers/PostController";
 import InputError from "@/components/input-error";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,7 +24,7 @@ const PostsCreate = () => {
                     <CardDescription>Create a new post</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <Form action="/posts" method="post" className="space-y-4">
+                    <Form action={store()} method="post" className="space-y-4">
                         {({ errors }) => (
                             <>
                                 <div className="space-y-1">

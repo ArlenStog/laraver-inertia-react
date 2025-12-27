@@ -21,6 +21,7 @@ interface PostsShowProps {
 export default function PostsShow({ post, comments }: PostsShowProps) {
     const ref = useRef<HTMLDivElement>(null);
     const commentCountRef = useRef(comments?.length ?? 0);
+    const iAmWrittingComment = useRef(false);
 
     const scrollToComments = () => {
         setTimeout(() => {
@@ -40,7 +41,8 @@ export default function PostsShow({ post, comments }: PostsShowProps) {
 
         if (
             newCommentCount > commentCountRef.current &&
-            commentCountRef.current > 0
+            commentCountRef.current > 0 &&
+            !iAmWrittingComment.current
         ) {
             toast("New comments available", {
                 duration: 6000,
@@ -51,9 +53,11 @@ export default function PostsShow({ post, comments }: PostsShowProps) {
             });
         }
         commentCountRef.current = newCommentCount;
+        iAmWrittingComment.current = false;
     }, [comments]);
 
     const onCommentAdded = () => {
+        iAmWrittingComment.current = true;
         toast("Comment has been added", {
             description: "Your comment is already live and visible",
         });
