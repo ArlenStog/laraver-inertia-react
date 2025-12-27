@@ -4,6 +4,7 @@ export interface Post {
     body: string;
     user_id: number;
     user?: User;
+    comments?: Comment[];
     created_at: string;
     updated_at: string;
 }

@@ -36,7 +36,7 @@ const PostsIndex = ({ posts }: PostsIndexProps) => {
                                         </Link>
                                     </CardTitle>
                                     <CardDescription>
-                                        By {post.user.name}
+                                        By {post?.user?.name}
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent>

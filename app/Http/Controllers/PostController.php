@@ -16,7 +16,7 @@ class PostController extends Controller
 
     public function index(): Response {
         return Inertia::render('posts/index',[
-            'posts' => Post::with('user')->latest()->get()
+            'posts' => Post::with(['user','comments'])->latest()->get()
         ]);
     }
 
@@ -24,7 +24,11 @@ class PostController extends Controller
     
     public function show(string $id): Response{
         return Inertia::render('posts/show', [
-            'post' => Post::with('user')->findOrFail($id)
+            'post' => Post::with([
+                'user',
+                'comments'=> fn($query) => $query->with('user')->latest()
+
+                ])->findOrFail($id)
         ]);
     }
     
